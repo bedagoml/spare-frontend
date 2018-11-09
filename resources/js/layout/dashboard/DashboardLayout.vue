@@ -1,6 +1,12 @@
 <template>
   <div class="wrapper">
-    <side-bar>
+      <side-bar v-if="!loggedIn">
+          <template slot="links">
+              <sidebar-link to="/login" name="Login" icon="ti-panel"/>
+              <sidebar-link to="/register" name="Register" icon="ti-panel"/>
+          </template>
+      </side-bar>
+    <side-bar v-if="loggedIn">
       <template slot="links">
         <sidebar-link to="/dashboard" name="Dashboard" icon="ti-panel"/>
         <sidebar-link to="/stats" name="User Profile" icon="ti-user"/>
@@ -60,6 +66,11 @@ export default {
     ContentFooter,
     DashboardContent,
     MobileMenu
+  },
+  data() {
+      return {
+          loggedIn: false
+      }
   },
   methods: {
     toggleSidebar() {

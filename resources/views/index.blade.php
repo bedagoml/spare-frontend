@@ -4,18 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Base CSS -->
-    <link rel="stylesheet" href="assets/css/basestyle/style.css">
-
-    <!-- Material Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <!-- Fontawesome Icons -->
-    <link href="{{ asset('public/assets/css/fontawesome/fontawesome-all.min.css') }}" rel="stylesheet">
-
-    <link href="{{ asset('public/assets/css/pages/login.css') }}" rel="stylesheet">
-
+    <link rel="stylesheet" href="{{ asset('public/css/themify-icons.css') }}">
     <title>{{ config('app.name') }}</title>
 </head>
 <body>

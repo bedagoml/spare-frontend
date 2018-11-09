@@ -8,6 +8,8 @@ import Icons from "../pages/Icons.vue";
 import Maps from "../pages/Maps.vue";
 import Typography from "../pages/Typography.vue";
 import TableList from "../pages/TableList.vue";
+import Login from "../pages/Login.vue";
+import Register from "../pages/Register.vue";
 
 const routes = [
   {
@@ -15,6 +17,16 @@ const routes = [
     component: DashboardLayout,
     redirect: "/dashboard",
     children: [
+      {
+            path: "login",
+            name: "login",
+            component: Login
+        },
+        {
+            path: "register",
+            name: "register",
+            component: Register
+        },
       {
         path: "dashboard",
         name: "dashboard",
