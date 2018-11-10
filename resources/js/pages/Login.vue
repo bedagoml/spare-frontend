@@ -1,6 +1,9 @@
 <template>
     <div class="row">
         <div class="col-md-6 offset-3">
+            <div class="alert alert-danger" v-if="errors.alert">
+                {{ errors.message }}
+            </div>
             <card class="card-user">
                 <div slot="header">
                     Login

@@ -44712,6 +44712,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -45648,6 +45651,14 @@ var render = function() {
       "div",
       { staticClass: "col-md-6 offset-3" },
       [
+        _vm.errors.alert
+          ? _c("div", { staticClass: "alert alert-danger" }, [
+              _vm._v(
+                "\n            " + _vm._s(_vm.errors.message) + "\n        "
+              )
+            ])
+          : _vm._e(),
+        _vm._v(" "),
         _c("card", { staticClass: "card-user" }, [
           _c("div", { attrs: { slot: "header" }, slot: "header" }, [
             _vm._v("\n                Login\n            ")
