@@ -43,11 +43,17 @@
         methods: {
             submit() {
                 this.loading = true;
-                console.log(this.form);
-                axios.post(process.env.MIX_API_URL + 'login', this.form, headers)
+                console.log();
+                axios.post(process.env.MIX_APP_URL + 'api/login', {
+                    'email': this.form.email,
+                    'password': this.form.password
+                }, headers)
                     .then(response => {
                         this.loading = false;
                         console.log(response);
+                    })
+                    .catch(error => {
+                        alert('error');
                     });
             }
         }

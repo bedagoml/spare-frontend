@@ -13,6 +13,8 @@ require('./bootstrap');
 Vue.component('app', App);
 
 window.headers = {
+    "Content-Type": "multipart/form-data;",
+    // "Content": "application/x-www-form-urlencoded",
     "Accept": "application/json",
     "Host": "104.238.185.164",
     "Access-Control-Allow-Origin": true
