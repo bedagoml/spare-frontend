@@ -1,8 +1,8 @@
 <template>
     <div class="row">
         <div class="col-md-6 offset-3">
-            <div class="alert alert-danger" v-if="errors.alert">
-                {{ errors.message }}
+            <div class="alert alert-danger" v-if="form.errors.alert">
+                {{ form.errors.message }}
             </div>
             <card class="card-user">
                 <div slot="header">
@@ -50,15 +50,15 @@
             submit() {
                 this.loading = true;
                 console.log();
-                axios.post(process.env.MIX_API_URL + 'login', {
+                axios.post(process.env.MIX_API_URL+ 'login', {
                     'email': this.form.email,
                     'password': this.form.password
                 }, headers)
                     .then(response => {
                         this.loading = false;
                         if (response.data.status === 'failed') {
-                            this.errors.alert = true;
-                            this.errors.message = response.data.message;
+                            this.form.errors.alert = true;
+                            this.form.errors.message = response.data.message;
                         }
                     })
                     .catch(error => {
