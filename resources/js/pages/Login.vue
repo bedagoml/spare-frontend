@@ -44,7 +44,7 @@
             submit() {
                 this.loading = true;
                 console.log();
-                axios.post(process.env.MIX_API_URL + '/login', {
+                axios.post(process.env.MIX_API_URL + 'login', {
                     'email': this.form.email,
                     'password': this.form.password
                 }, headers)
