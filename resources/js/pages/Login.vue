@@ -36,7 +36,10 @@
                 form: {
                     email: '',
                     password: '',
-                    errors: {}
+                    errors: {
+                        alert: false,
+                        message: ''
+                    }
                 }
             }
         },
@@ -50,10 +53,13 @@
                 }, headers)
                     .then(response => {
                         this.loading = false;
-                        console.log(response);
+                        if (response.data.status === 'failed') {
+                            this.errors.alert = true;
+                            this.errors.message = response.data.message;
+                        }
                     })
                     .catch(error => {
-                        alert('error');
+
                     });
             }
         }

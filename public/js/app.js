@@ -44725,7 +44725,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             form: {
                 email: '',
                 password: '',
-                errors: {}
+                errors: {
+                    alert: false,
+                    message: ''
+                }
             }
         };
     },
@@ -44741,10 +44744,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'password': this.form.password
             }, headers).then(function (response) {
                 _this.loading = false;
-                console.log(response);
-            }).catch(function (error) {
-                alert('error');
-            });
+                if (response.data.status === 'failed') {
+                    _this.errors.alert = true;
+                    _this.errors.message = response.data.message;
+                }
+            }).catch(function (error) {});
         }
     }
 });
