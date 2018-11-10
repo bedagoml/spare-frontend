@@ -7,21 +7,22 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state: {
-        cart: {
-            cartItems: []
-        }
+        user: {}
     },
     mutations: {
-        updateCart(state, data) {
-            state.cart = data;
+        updateUser(state, data) {
+            state.user = data;
         }
     },
     getters: {
-        cartItems: (state) => {
-            return state.cart.cartItems;
+        accessToken: (state) => {
+            return state.user.accessToken;
         },
-        cartItemCount: (state) => {
-            return state.cart.cartItems.length;
+        userName: (state) => {
+            return state.user.name;
+        },
+        userEmail: (state) => {
+            return state.user.email;
         }
     }
 });
