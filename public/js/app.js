@@ -44736,7 +44736,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.loading = true;
             console.log();
-            axios.post("http://localhost/spare-frontend" + 'api/login', {
+            axios.post("http://localhost/spare-frontend" + '/api/login', {
                 'email': this.form.email,
                 'password': this.form.password
             }, headers).then(function (response) {
