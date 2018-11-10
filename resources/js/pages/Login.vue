@@ -49,11 +49,11 @@
         methods: {
             submit() {
                 this.loading = true;
-                console.log();
-                axios.post(process.env.MIX_API_URL+ 'login', {
-                    'email': this.form.email,
-                    'password': this.form.password
-                }, headers)
+                var formData = new FormData();
+                formData.append('email', this.form.email);
+                formData.append('password', this.form.password);
+
+                axios.post(process.env.MIX_API_URL+ 'login', formData)
                     .then(response => {
                         this.loading = false;
                         if (response.data.status === 'failed') {
@@ -61,21 +61,16 @@
                             this.form.errors.message = response.data.message;
                             return;
                         }
-
-                        const userDetails = {
-                            "id": "5be32f25293c3443a1a48745",
-                            "name": "kabogo",
-                            "email": "d@m.com",
-                            "createdOn": 1541615397405,
-                            "accessToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkQG0uY29tIiwiZXhwIjoxNTQyNjk5ODc4fQ.DaFfaWrmnmvVYwbaqLz5EFXUmNQTtphFEKmbhXxUsSmqoPMOzzGqx9tJ-8V8zpwizP3Vtwyb5tIbZSA5iKNhFQ"
-                        };
-                        cookies.set('userDetails', userDetails);
+                        const userDetails = response.data;
+                        this.setCookie('userDetails', userDetails, 10);
+                        const store = this.$store;
                         store.commit('updateUser', cookies.get('userDetails'));
+                        console.log(this.getCookie('userDetails'));
                     })
                     .catch(error => {
 
                     });
-            }
+            },
         }
     }
 </script>
