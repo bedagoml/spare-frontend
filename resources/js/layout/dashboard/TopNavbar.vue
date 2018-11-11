@@ -12,29 +12,11 @@
         <span class="navbar-toggler-bar"></span>
       </button>
       <div class="collapse navbar-collapse">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto" v-if="loggedIn">
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="ti-panel"></i>
-              <p>Stats</p>
-            </a>
-          </li>
-          <drop-down class="nav-item"
-                     title="5 Notifications"
-                     title-classes="nav-link"
-                     icon="ti-bell">
-            <a class="dropdown-item" href="#">Notification 1</a>
-            <a class="dropdown-item" href="#">Notification 2</a>
-            <a class="dropdown-item" href="#">Notification 3</a>
-            <a class="dropdown-item" href="#">Notification 4</a>
-            <a class="dropdown-item" href="#">Another notification</a>
-          </drop-down>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="ti-settings"></i>
-              <p>
-                Settings
-              </p>
+            <a href="#" class="nav-link" @click.prevent="logout">
+              <i class="ti-power-off"></i>
+              <p>Logout</p>
             </a>
           </li>
         </ul>
@@ -47,11 +29,14 @@ export default {
     routeName() {
       const { name } = this.$route;
       return this.capitalizeFirstLetter(name);
-    }
+    },
+      loggedIn() {
+        return this.$store.getters.loggedIn;
+      }
   },
   data() {
     return {
-      activeNotifications: false
+      activeNotifications: false,
     };
   },
   methods: {
@@ -69,6 +54,14 @@ export default {
     },
     hideSidebar() {
       this.$sidebar.displaySidebar(false);
+    },
+    logout() {
+        if (! confirm("you sure about this?")) {
+            return;
+        }
+
+        this.$store.commit('clearUserData');
+        this.$router.push('/login');
     }
   }
 };

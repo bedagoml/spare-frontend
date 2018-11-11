@@ -5,12 +5,16 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state: {
-        user: {}
+        user: JSON.parse(localStorage.getItem('user-data')) || {}
     },
     mutations: {
         updateUser(state, data) {
-            localStorage.setItem('user-data', data);
+            localStorage.setItem('user-data', JSON.stringify(data));
             state.user = data;
+        },
+        clearUserData(state) {
+            localStorage.clear();
+            state.user = {};
         }
     },
     getters: {

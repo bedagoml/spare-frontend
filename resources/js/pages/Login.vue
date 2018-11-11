@@ -62,15 +62,21 @@
                             return;
                         }
                         const userDetails = response.data;
-                        this.setCookie('userDetails', userDetails, 10);
                         const store = this.$store;
-                        store.commit('updateUser', cookies.get('userDetails'));
-                        console.log(this.getCookie('userDetails'));
+                        store.commit('updateUser', userDetails);
+                        if (this.loggedIn) {
+                            this.$router.push('/dashboard');
+                        }
                     })
                     .catch(error => {
 
                     });
             },
+        },
+        computed: {
+            loggedIn() {
+                return this.$store.getters.loggedIn;
+            }
         }
     }
 </script>
